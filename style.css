@@ -272,12 +272,6 @@ footer {
     isolation: isolate; /* Create a new stacking context */
 }
 
-.menu button:hover:not(:disabled) {
-    background-color: #ccc;
-    color: #000;
-    box-shadow: 0 0 10px #ccc;
-}
-
 /* Add a separate active state for tap feedback on mobile */
 .menu button:active:not(:disabled) {
     background-color: #ccc;
@@ -478,5 +472,26 @@ h1 .not-word.pulse-red { animation: notPulse 1.2s ease; }
     .collectibles-container {
         order: 1; /* Move cards above menu */
         margin-bottom: 2vmin;
+    }
+}
+
+/* Apply hover effects only on devices that can truly hover */
+@media (hover: hover) {
+    .credits-btn:hover {
+        background-color: #ccc;
+        color: #000;
+    }
+    .credits-btn:hover::after {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .menu button:hover:not(:disabled) {
+        background-color: #ccc;
+        color: #000;
+        box-shadow: 0 0 10px #ccc;
+    }
+    .card:hover {
+        transform: translateY(-10px) rotate(var(--rotation, 0deg)) !important;
+        z-index: 10;
     }
 }
